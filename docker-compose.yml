@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: mentor_db
       POSTGRES_USER: mentor_user
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env.compose}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       POSTGRES_INITDB_ARGS: --encoding=UTF-8 --lc-collate=C --lc-ctype=C
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -29,7 +29,7 @@ services:
       NODE_ENV: production
       PORT: 4000
       HOST: 0.0.0.0
-      DATABASE_URL: postgresql://mentor_user:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env.compose}@postgres:5432/mentor_db
+      DATABASE_URL: postgresql://mentor_user:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/mentor_db
       CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000,http://localhost:3102}
       ADMIN_LOGIN: ${ADMIN_LOGIN:?Set ADMIN_LOGIN}
       ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:?Set ADMIN_PASSWORD_HASH}
