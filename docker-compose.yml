@@ -7,7 +7,7 @@ services:
       target: runner
     restart: unless-stopped
     ports:
-      - "127.0.0.1:4000:4000"
+      - "127.0.0.1:${BACKEND_PORT:-4000}:4000"
     environment:
       NODE_ENV: production
       PORT: 4000
@@ -35,7 +35,7 @@ services:
         NEXT_PUBLIC_YANDEX_API: ${NEXT_PUBLIC_YANDEX_API:-}
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:${FRONTEND_PORT:-3000}:3000"
     environment:
       BLOG_API_URL: ${BLOG_API_URL:-http://backend:4000/articles}
 
@@ -46,4 +46,4 @@ services:
         VITE_API_URL: ${VITE_API_URL:-http://localhost:4000}
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3102:8080"
+      - "127.0.0.1:${ADMIN_PORT:-3102}:8080"
